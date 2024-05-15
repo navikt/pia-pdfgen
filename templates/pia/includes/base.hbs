@@ -1,0 +1,38 @@
+<img class="header-ikon" alt="NAV logo"
+     src="{{ image "navlogo.png" }}"/>
+
+<div class="generell-info">
+    <table>
+        <tr>
+            <td>Arbeidsgiver:</td>
+            <td>{{ arbeidsgiver.navn }}</td>
+        </tr>
+        <tr>
+            <td>Organisasjonsnummer:</td>
+            <td>{{ arbeidsgiver.orgnummer }}</td>
+        </tr>
+        <tr>
+            <td>Saksnummer:</td>
+            <td>{{ sak.saksnummer }}</td>
+        </tr>
+        <tr>
+            <td>Saksbehandler:</td>
+            <td>{{ sak.eier }}</td>
+        </tr>
+        <tr>
+            <td>Dato:</td>
+            <td>{{ iso_to_nor_datetime dato }}</td>
+        </tr>
+    </table>
+</div>
+
+<div id="footer">
+    <span class="navn">{{arbeidsgiver.navn}} ({{arbeidsgiver.orgnummer}})</span>
+    <span class="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
+</div>
+
+<header>
+    <h1>
+        {{> tittel}}
+    </h1>
+</header>

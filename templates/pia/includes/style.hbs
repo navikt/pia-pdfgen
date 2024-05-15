@@ -1,0 +1,53 @@
+<style>
+    @page {
+        padding-bottom: 60px;
+        margin-top: 60px;
+        margin-left: 1cm;
+        margin-right: 1cm;
+
+        @bottom-left {
+            content: element(footer);
+        }
+    }
+
+    @page :first {
+        margin-top: 1cm;
+    }
+
+    * {
+        font-family: "Source Sans Pro", SourceSansPro, Source_Sans_Pro, ArialSystem, sans-serif;
+        color: #3e3832;
+    }
+
+    .header-ikon {
+        width: 20%;
+        position: relative;
+        left: 560px;
+    }
+
+    .generell-info {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .generell-info td:first-child {
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    #footer {
+        position: running(footer);
+        font-size: 12px;
+        margin-top: -25px;
+        padding-left: 0.6cm;
+    }
+    .sidetall {
+        float: right;
+    }
+    #pagenumber:before {
+        content: counter(page);
+    }
+    #pagecount:before {
+        content: counter(pages)
+    }
+</style>
