@@ -1,0 +1,29 @@
+name: Deploy app to dev
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-push-deploy:
+    permissions:
+      contents: "read"
+      id-token: "write"
+    name: Checkout code and create docker tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: docker-build-push
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: pia
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+      - name: deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@master
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/nais.yaml
+          VAR: image=${{ steps.docker-build-push.outputs.image }}

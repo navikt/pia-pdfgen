@@ -1,0 +1,25 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: "pia-pdfgen"
+  namespace: "pia"
+  labels:
+    "team": "pia"
+spec:
+  image: {{image}}
+  replicas:
+    min: 1
+  liveness:
+    path: "/internal/is_alive"
+    port: 8080
+    initialDelay: 10
+    failureThreshold: 10
+  readiness:
+    path: "/internal/is_ready"
+    port: 8080
+    initialDelay: 10
+    failureThreshold: 10
+  accessPolicy:
+    inbound:
+      rules:
+        - application: lydia-api
