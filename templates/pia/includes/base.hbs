@@ -4,12 +4,12 @@
 <div class="generell-info">
     <table>
         <tr>
-            <td>Arbeidsgiver:</td>
-            <td>{{ arbeidsgiver.navn }}</td>
+            <td>Virksomhet:</td>
+            <td>{{ virksomhet.navn }}</td>
         </tr>
         <tr>
             <td>Organisasjonsnummer:</td>
-            <td>{{ arbeidsgiver.orgnummer }}</td>
+            <td>{{ virksomhet.orgnummer }}</td>
         </tr>
         <tr>
             <td>Saksnummer:</td>
@@ -27,7 +27,7 @@
 </div>
 
 <div id="footer">
-    <span class="navn">{{arbeidsgiver.navn}} ({{arbeidsgiver.orgnummer}})</span>
+    <span class="navn">{{virksomhet.navn}} ({{virksomhet.orgnummer}})</span>
     <span class="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
 </div>
 
