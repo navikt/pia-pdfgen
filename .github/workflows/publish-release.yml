@@ -1,6 +1,9 @@
 name: Create and publish a Docker image
 
-permissions: {}
+permissions:
+  contents: read
+  packages: write
+  attestations: write
 
 on:
   release:
@@ -13,10 +16,6 @@ env:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-      attestations: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
