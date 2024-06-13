@@ -27,16 +27,19 @@ jobs:
       image: ${{ steps.docker-build-push.outputs.image }}
 
   deploy:
-    name: Deploy to dev-gcp
+    strategy:
+      matrix:
+        cluster: [dev, prod]
+    name: Deploy to ${{ matrix.cluster }}-gcp
     permissions:
       id-token: write
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy application to dev-gcp
+      - name: Deploy application to ${{ matrix.cluster }}-gcp
         uses: nais/deploy/actions/deploy@v2
         env:
           IMAGE: ${{ needs.build.outputs.image }}
-          CLUSTER: dev-gcp
+          CLUSTER: ${{ matrix.cluster }}-gcp
           RESOURCE: .nais/nais.yaml
