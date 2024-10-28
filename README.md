@@ -5,8 +5,14 @@ Team Pia sin pdf-generator for dokumenter produsert av fagsystemet Fia.
 
 # Komme i gang
 
-TODO
+## Teste lokalt
 
+Kjør `./run.sh` i rot mappa. Dette burde starte opp et docker image som burde svare på feks:
+
+`http://localhost:8080/api/v1/genpdf/pia/ia-samarbeid`
+
+, hvor `ia-samarbeid` er en template (`/templates/pia/<template>`) med data fra `/data/pia/<template>.json`
+ 
 ---
 
 # Henvendelser
