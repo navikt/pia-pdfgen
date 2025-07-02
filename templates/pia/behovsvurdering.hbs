@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Gjennomført behovsvurdering"/>
+    <meta name="author" content="pia-pdf"/>
+    <meta name="subject" content="Gjennomført behovsvurdering"/>
+    {{#> pia/includes/style }}
+    {{/pia/includes/style}}
+    <title>Behovsvurdering-{{ samarbeid.navn }}-{{ samarbeid.id }}</title>
+</head>
+<body>
+{{#> pia/includes/base_behovsvurdering }}
+    {{#*inline "tittel"}}Gjennomført behovsvurdering{{/inline}}
+{{/pia/includes/base_behovsvurdering}}
+<br/>
+
+<div class="behovsvurdering">
+    <p>Resultatene fra behovsvurderingen er sortert på tema og spørsmål</p>
+    <br/>
+
+    {{#each spørreundersøkelse.innhold.spørsmålMedSvarPerTema}}
+        <div>
+            <div class="pagebreak"></div>
+            <div class="tema-med-spm-og-svar">
+                <h2>{{this.navn}}</h2>
+                {{#each this.spørsmålMedSvar}}
+                    <div class="spm-med-svaralternativer-og-antall-svar">
+                        <h3>{{this.tekst}}</h3>
+                        <p>Antall deltakere som har svart: {{this.antallDeltakereSomHarSvart}}</p>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Svaralternativ</th>
+                                <th>Antall svar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each this.svarListe}}
+                                <tr>
+                                    <td>{{this.tekst}}</td>
+                                    <td>{{this.antallSvar}}</td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                {{/each}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+</div>
+</body>
+</html>
