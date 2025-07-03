@@ -25,6 +25,16 @@
         left: 560px;
     }
 
+    .enhet-info {
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
+
+    .enhet-info td:first-child {
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
     .generell-info {
         margin-top: 60px;
         margin-bottom: 60px;
@@ -33,6 +43,10 @@
     .generell-info td:first-child {
         font-weight: bold;
         padding-right: 10px;
+    }
+
+    .pagebreak {
+        page-break-before: always;
     }
 
     #footer {
@@ -54,5 +68,37 @@
     .samarbeidstatus {
         background: #eceef0;
         padding: 1rem;
+    }
+
+    .behovsvurdering {
+       padding: .25rem;
+    }
+
+    .behovsvurdering table {
+            border-collapse: collapse;
+            border: 2px solid rgb(140 140 140);
+            font-family: sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            width: 100%;
+            margin-bottom: 1rem;
+            table-layout: fixed;
+            word-wrap: break-word;
+    }
+    .behovsvurdering th,
+    .behovsvurdering td {
+            border: 1px solid rgb(160 160 160);
+            padding: 8px 10px;
+    }
+    .behovsvurdering tbody > tr:nth-of-type(even) {
+            background-color: rgb(237 238 242);
+    }
+
+    .tema-med-spm-og-svar {
+        page-break-inside: avoid;
+    }
+
+    .spm-med-svaralternativer-og-antall-svar {
+        margin-bottom: 3rem;
     }
 </style>
