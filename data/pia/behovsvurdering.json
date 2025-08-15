@@ -2,7 +2,10 @@
   "publiseringsdato": "2025-07-02T10:52:03Z",
   "sak": {
     "saksnummer": "01HXXPFZFNRKD41JWHAY321BEZ",
-    "navenhet": "Oslo Arbeidslivssenter"
+    "navenhet": {
+      "enhetsnummer": "1234",
+      "enhetsnavn": "Oslo Arbeidslivsenter"
+    }
   },
   "virksomhet": {
     "orgnummer": "987654321",
