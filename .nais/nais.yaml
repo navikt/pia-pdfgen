@@ -36,3 +36,4 @@ spec:
     inbound:
       rules:
         - application: lydia-api
+        - application: fia-dokument-publisering
