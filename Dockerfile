@@ -1,5 +1,5 @@
 # Dockerfile
-FROM ghcr.io/navikt/pdfgen:2.0.84
+FROM ghcr.io/navikt/pdfgen:2.0.93
 
 COPY templates /app/templates
 COPY fonts /app/fonts
