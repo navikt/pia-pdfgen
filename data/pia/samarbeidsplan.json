@@ -1,0 +1,202 @@
+{
+  "publiseringsdato": "2025-07-02T10:52:03Z",
+  "referanseId": "2e84469f-5224-4d85-9f8b-43965502df32",
+  "sak": {
+    "saksnummer": "01HXXPFZFNRKD41JWHAY321BEZ",
+    "navenhet": {
+      "enhetsnummer": "1234",
+      "enhetsnavn": "Oslo Arbeidslivsenter"
+    }
+  },
+  "virksomhet": {
+    "orgnummer": "987654321",
+    "navn": "SIGEN HEVNGJERRIG TIGER AS"
+  },
+  "samarbeid": {
+    "id": 1214,
+    "navn": "Avdeling Bergen",
+    "status": "AKTIV"
+  },
+  "samarbeidsplan": {
+    "sistEndret": "2025-09-17T14:45:24.626582",
+    "innhold": {
+      "temaer": [
+        {
+          "id": 169,
+          "navn": "Partssamarbeid",
+          "inkludert": true,
+          "undertemaer": [
+            {
+              "id": 606,
+              "navn": "Utvikle partssamarbeidet",
+              "målsetning": "Styrke og strukturere samarbeidet mellom leder, tillitsvalgt og verneombud, samt øke kunnskap og ferdigheter for å jobbe systematisk og forebyggende med sykefravær og arbeidsmiljø.",
+              "inkludert": true,
+              "status": "PLANLAGT",
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": "2024-09-27",
+              "sluttDato": "2024-12-24",
+              "harAktiviteterISalesforce": false
+            }
+          ]
+        },
+        {
+          "id": 170,
+          "navn": "Sykefraværsarbeid",
+          "inkludert": true,
+          "undertemaer": [
+            {
+              "id": 610,
+              "navn": "Sykefravær - enkeltsaker",
+              "målsetning": "Øke kompetanse og ferdigheter for hvordan man tar tak i, følger opp og løser enkeltsaker.",
+              "inkludert": false,
+              "status": null,
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": null,
+              "sluttDato": null,
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 607,
+              "navn": "Sykefraværsrutiner",
+              "målsetning": "Jobbe systematisk og forebyggende med sykefravær, samt forbedre rutiner og oppfølging av ansatte som er sykmeldte eller står i fare for å bli det.",
+              "inkludert": false,
+              "status": null,
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": null,
+              "sluttDato": null,
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 609,
+              "navn": "Tilretteleggings- og medvirkningsplikt",
+              "målsetning": "Utvikle rutiner og kultur for tilrettelegging og medvirkning, samt kartlegging av tilretteleggingsmuligheter på arbeidsplassen.",
+              "inkludert": true,
+              "status": "AVBRUTT",
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": "2024-09-17",
+              "sluttDato": "2024-12-23",
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 608,
+              "navn": "Oppfølgingssamtaler",
+              "målsetning": "Øke kompetanse og ferdigheter for hvordan man gjennomfører gode oppfølgingssamtaler, både gjennom teori og praksis.",
+              "inkludert": true,
+              "status": "PLANLAGT",
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": "2024-09-01",
+              "sluttDato": "2024-12-01",
+              "harAktiviteterISalesforce": false
+            }
+          ]
+        },
+        {
+          "id": 171,
+          "navn": "Arbeidsmiljø",
+          "inkludert": true,
+          "undertemaer": [
+            {
+              "id": 611,
+              "navn": "Utvikle arbeidsmiljøet",
+              "målsetning": "Øke anvendelse og kompetanse innen verktøy og bransjerettet kunnskap for å jobbe målrettet og kunnskapsbasert med eget arbeidsmiljø.",
+              "inkludert": false,
+              "status": null,
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": null,
+              "sluttDato": null,
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 612,
+              "navn": "Endring og omstilling",
+              "målsetning": "Øke kompetansen for hvordan man ivaretar arbeidsmiljø og forebygger sykefravær under endring og omstilling.",
+              "inkludert": false,
+              "status": null,
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": null,
+              "sluttDato": null,
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 613,
+              "navn": "Oppfølging av arbeidsmiljøundersøkelser",
+              "målsetning": "Øke ferdigheter og gi støtte til hvordan man kan jobbe med forhold på arbeidsplassen som belyses i egne arbeidsmiljøundersøkelser.",
+              "inkludert": false,
+              "status": null,
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": null,
+              "sluttDato": null,
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 616,
+              "navn": "HelseIArbeid",
+              "målsetning": "Øke kompetansen og få ansatte til å mestre jobb, selv med muskel/skjelett- og psykiske helseplager.",
+              "inkludert": true,
+              "status": "PÅGÅR",
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": "2024-09-23",
+              "sluttDato": "2024-12-23",
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 614,
+              "navn": "Livsfaseorientert personalpolitikk",
+              "målsetning": "Utvikle kultur og personalpolitikk som ivaretar medarbeideres ulike behov, krav, begrensninger og muligheter i ulike livsfaser.",
+              "inkludert": false,
+              "status": null,
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": null,
+              "sluttDato": null,
+              "harAktiviteterISalesforce": false
+            },
+            {
+              "id": 615,
+              "navn": "Psykisk helse",
+              "målsetning": "Gi innsikt i hvordan psykiske utfordringer kan komme til uttrykk i arbeidshverdagen og øke ferdigheter for hvordan man møter medarbeidere med psykiske helseutfordringer.",
+              "inkludert": false,
+              "status": null,
+              "periode": {
+                "fom": "2020-03-20",
+                "tom": "2021-09-23"
+              },
+              "startDato": null,
+              "sluttDato": null,
+              "harAktiviteterISalesforce": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

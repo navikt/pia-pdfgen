@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Samarbeidsplan"/>
+    <meta name="author" content="pia-pdf"/>
+    <meta name="subject" content="Samarbeidsplan"/>
+    {{#> pia/includes/style }}
+    {{/pia/includes/style}}
+    <title>Samarbeidsplan-{{ samarbeid.navn }}-{{ samarbeid.id }}</title>
+</head>
+<body>
+
+{{#> pia/includes/base_header_samarbeid_dokumenter }}
+    {{#*inline "tittel"}}Samarbeidsplan{{/inline}}
+{{/pia/includes/base_header_samarbeid_dokumenter}}
+<br/>
+
+<div class="samarbeidsdokument">
+    <p>[ ... intro om samarbeidsplan].</p>
+    <p>[ ... og kanskje litt mer]</p>
+    <br/>
+
+    {{#each samarbeidsplan.innhold.temaer}}
+        <div>
+            <div class="pagebreak"></div>
+            <div class="tema-med-spm-og-svar">
+                <h2>{{this.navn}}</h2>
+                {{#each this.undertemaer}}
+                    {{#if this.status}}
+                        <div class="spm-med-svaralternativer-og-antall-svar">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Innhold</th>
+                                    <th>Varighet</th>
+                                    <th>status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{this.navn}}</td>
+                                    <td>{{json_to_period this.periode}}</td>
+                                    <td>{{this.status}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><span style="font-weight: bold">Mål: </span>{{this.målsetning}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {{/if}}
+                {{/each}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+</div>
+</body>
+</html>
