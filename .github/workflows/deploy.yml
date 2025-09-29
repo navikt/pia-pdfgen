@@ -1,17 +1,17 @@
 name: Build and deploy app to dev
-on:
-  push:
-    branches:
-      - main
-      - pdf-til-samarbeid
+on: [ push ]
 
-permissions: {}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: { }
 
 jobs:
   build:
     permissions:
-      contents: read
       id-token: write
+      contents: read
     name: build
     runs-on: ubuntu-latest
     steps:
@@ -26,12 +26,12 @@ jobs:
       image: ${{ steps.docker-build-push.outputs.image }}
 
   deploy:
+    permissions:
+      id-token: write
     strategy:
       matrix:
         cluster: [dev, prod]
     name: Deploy to ${{ matrix.cluster }}-gcp
-    permissions:
-      id-token: write
     needs: build
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
