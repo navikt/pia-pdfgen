@@ -17,11 +17,10 @@
 <br/>
 
 <div class="samarbeidsdokument">
-    <p>[ ... intro om samarbeidsplan].</p>
-    <p>[ ... og kanskje litt mer]</p>
+    <p>Sist endret: {{ iso_to_nor_datetime innhold.sistEndret }}</p>
     <br/>
 
-    {{#each samarbeidsplan.innhold.temaer}}
+    {{#each innhold.temaer}}
         <div>
             <div class="pagebreak"></div>
             <div class="tema-med-spm-og-svar">
