@@ -20,9 +20,9 @@ Kjør `./run.sh` i rot mappa. Dette burde starte opp et docker image som burde s
 
 `http://localhost:8080/api/v1/genpdf/pia/ia-samarbeid`
 
-eller
-
 `http://localhost:8080/api/v1/genpdf/pia/behovsvurdering`
+
+`http://localhost:8080/api/v1/genpdf/pia/samarbeidsplan`
 
 hvor `ia-samarbeid`|`behovsvurdering` er en template (`/templates/pia/<template>`) med data fra `/data/pia/<template>.json`
  
