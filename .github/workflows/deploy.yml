@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - pdf-til-samarbeid
 
 permissions: {}
 
@@ -32,6 +33,7 @@ jobs:
     permissions:
       id-token: write
     needs: build
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,6 +42,23 @@ jobs:
         env:
           IMAGE: ${{ needs.build.outputs.image }}
           CLUSTER: ${{ matrix.cluster }}-gcp
+          RESOURCE: .nais/nais.yaml
+
+  deploy-dev-branch:
+    permissions:
+      id-token: write
+    name: Deploy branch to dev
+    needs: build
+    if: github.ref == 'refs/heads/pdf-til-samarbeidsplan'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy application to dev
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          IMAGE: ${{ needs.build.outputs.image }}
+          CLUSTER: dev-gcp
           RESOURCE: .nais/nais.yaml
 
   trivy-scan:
