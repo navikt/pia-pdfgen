@@ -10,12 +10,14 @@
     <title>Behovsvurdering-{{ samarbeid.navn }}-{{ samarbeid.id }}</title>
 </head>
 <body>
-{{#> pia/includes/base_behovsvurdering }}
+{{#> pia/includes/base_header_samarbeid_dokumenter }}
     {{#*inline "tittel"}}Gjennomført behovsvurdering{{/inline}}
-{{/pia/includes/base_behovsvurdering}}
+{{/pia/includes/base_header_samarbeid_dokumenter}}
 <br/>
 
 <div class="samarbeidsdokument">
+    <p>Gjennomført: {{ iso_to_nor_datetime spørreundersøkelse.fullførtTidspunkt }}</p>
+
     <p>Resultatene fra behovsvurderingen er sortert på tema og spørsmål.</p>
     <p>For å ivareta anonymitet må det være minst tre svar per spørsmål. Ved mindre enn tre svar skjules antall
         deltakere og resultatene settes til null.</p>
