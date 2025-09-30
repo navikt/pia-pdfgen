@@ -19,6 +19,8 @@
 <div class="samarbeidsdokument">
     <p>Sist endret: {{ iso_to_nor_datetime innhold.sistEndret }}</p>
     <br/>
+    <p>Samarbeidsplanen mellom Nav og virksomheten viser prioriterte temaer og hvor lenge lenge man skal jobbe med de ulike undertemaene. Hvert undertema har et definert mål, varighet og status. Planen kan endres helt frem til samarbeidet med virksomheten avsluttes.</p>
+
 
     {{#each innhold.temaer}}
         <div>
@@ -39,7 +41,19 @@
                                 <tbody>
                                 <tr>
                                     <td>{{this.navn}}</td>
-                                    <td>{{json_to_period this.periode}}</td>
+                                    <td>
+                                        {{#any this.startDato this.sluttDato}}
+                                            {{#if this.startDato}}
+                                                {{#if this.sluttDato}}
+                                                    {{concat (iso_to_date this.startDato) "-" (iso_to_date this.sluttDato)}}
+                                                {{else}}
+                                                    {{concat (iso_to_date this.startDato) "-"}}
+                                                {{/if}}
+                                            {{/if}}
+                                            {{else}}
+                                            -
+                                        {{/any}}
+                                    </td>
                                     <td>{{this.status}}</td>
                                 </tr>
                                 <tr>
