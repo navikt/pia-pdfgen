@@ -1,0 +1,29 @@
+<div>
+    <div class="pagebreak"></div>
+    <div class="tema-med-spm-og-svar">
+        <h2>{{this.navn}}</h2>
+        {{#each this.spørsmålMedSvar}}
+            <div class="spm-med-svaralternativer-og-antall-svar">
+                <h3>{{this.tekst}}</h3>
+                <p>Antall deltakere som har svart: {{this.antallDeltakereSomHarSvart}}</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Svaralternativ</th>
+                        <th>Antall svar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each this.svarListe}}
+                        <tr>
+                            <td>{{this.tekst}}</td>
+                            <td>{{this.antallSvar}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{/each}}
+        <br/>
+    </div>
+</div>

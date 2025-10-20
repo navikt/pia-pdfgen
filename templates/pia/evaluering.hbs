@@ -2,23 +2,23 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="description" content="Gjennomført behovsvurdering"/>
+    <meta name="description" content="Gjennomført evaluering"/>
     <meta name="author" content="pia-pdf"/>
-    <meta name="subject" content="Gjennomført behovsvurdering"/>
+    <meta name="subject" content="Gjennomført evaluering"/>
     {{#> pia/includes/style }}
     {{/pia/includes/style}}
-    <title>Behovsvurdering-{{ samarbeid.navn }}-{{ samarbeid.id }}</title>
+    <title>Evaluering-{{ samarbeid.navn }}-{{ samarbeid.id }}</title>
 </head>
 <body>
 {{#> pia/includes/base_header_samarbeid_dokumenter }}
-    {{#*inline "tittel"}}Gjennomført behovsvurdering{{/inline}}
+    {{#*inline "tittel"}}Gjennomført evaluering{{/inline}}
 {{/pia/includes/base_header_samarbeid_dokumenter}}
 <br/>
 
 <div class="samarbeidsdokument">
     <p>Gjennomført: {{ iso_to_nor_datetime innhold.fullførtTidspunkt }}</p>
 
-    <p>Resultatene fra behovsvurderingen er sortert på tema og spørsmål.</p>
+    <p>Resultatene fra evalueringen er sortert på tema og spørsmål.</p>
     <p>For å ivareta anonymitet må det være minst tre svar per spørsmål. Ved mindre enn tre svar skjules antall
         deltakere og resultatene settes til null.</p>
     <br/>
