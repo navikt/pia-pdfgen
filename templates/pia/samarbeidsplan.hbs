@@ -23,50 +23,52 @@
 
 
     {{#each innhold.temaer}}
-        <div>
-            <div class="pagebreak"></div>
-            <div class="tema-med-spm-og-svar">
-                <h2>{{this.navn}}</h2>
-                {{#each this.undertemaer}}
-                    {{#if this.status}}
-                        <div class="spm-med-svaralternativer-og-antall-svar">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th>Innhold</th>
-                                    <th>Varighet</th>
-                                    <th>status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>{{this.navn}}</td>
-                                    <td>
-                                        {{#any this.startDato this.sluttDato}}
-                                            {{#if this.startDato}}
-                                                {{#if this.sluttDato}}
-                                                    {{concat (iso_to_date this.startDato) "-" (iso_to_date this.sluttDato)}}
-                                                {{else}}
-                                                    {{concat (iso_to_date this.startDato) "-"}}
+        {{#if this.inkludert}}
+            <div>
+                <div class="pagebreak"></div>
+                <div class="tema-med-spm-og-svar">
+                    <h2>{{this.navn}}</h2>
+                    {{#each this.undertemaer}}
+                        {{#if this.status}}
+                            <div class="spm-med-svaralternativer-og-antall-svar">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Innhold</th>
+                                        <th>Varighet</th>
+                                        <th>status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{this.navn}}</td>
+                                        <td>
+                                            {{#any this.startDato this.sluttDato}}
+                                                {{#if this.startDato}}
+                                                    {{#if this.sluttDato}}
+                                                        {{concat (iso_to_date this.startDato) "-" (iso_to_date this.sluttDato)}}
+                                                    {{else}}
+                                                        {{concat (iso_to_date this.startDato) "-"}}
+                                                    {{/if}}
                                                 {{/if}}
-                                            {{/if}}
-                                            {{else}}
-                                            -
-                                        {{/any}}
-                                    </td>
-                                    <td>{{this.status}}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><span style="font-weight: bold">Mål: </span>{{this.målsetning}}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    {{/if}}
-                {{/each}}
-                <br/>
+                                                {{else}}
+                                                -
+                                            {{/any}}
+                                        </td>
+                                        <td>{{this.status}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><span style="font-weight: bold">Mål: </span>{{this.målsetning}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        {{/if}}
+                    {{/each}}
+                    <br/>
+                </div>
             </div>
-        </div>
+        {{/if}}
     {{/each}}
 </div>
 </body>
