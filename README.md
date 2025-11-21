@@ -18,8 +18,6 @@ Den forslått koden i ``Preparation-Script`` boks på denne siden kan du komment
 
 Kjør `./run.sh` i rot mappa. Dette burde starte opp et docker image som burde svare på feks:
 
-`http://localhost:8080/api/v1/genpdf/pia/ia-samarbeid`
-
 `http://localhost:8080/api/v1/genpdf/pia/behovsvurdering`
 
 `http://localhost:8080/api/v1/genpdf/pia/samarbeidsplan`
