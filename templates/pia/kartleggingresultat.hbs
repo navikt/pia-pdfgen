@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Gjennomført {{lowercase type}}"/>
+    <meta name="author" content="pia-pdf"/>
+    <meta name="subject" content="Gjennomført {{lowercase type}}"/>
+    {{#> pia/includes/style }}
+    {{/pia/includes/style}}
+    <title>{{capitalize type}}-{{ samarbeid.navn }}</title>
+</head>
+<body>
+
+<img class="header-ikon" alt="NAV logo"
+     src="{{ image "navlogo.png" }}"/>
+
+<div class="generell-info">
+    <table>
+        <tr>
+            <td>Virksomhet:</td>
+            <td>{{ virksomhet.navn }}</td>
+        </tr>
+        <tr>
+            <td>Samarbeidsnavn:</td>
+            <td>{{ samarbeid.navn }}</td>
+        </tr>
+    </table>
+</div>
+
+<div id="footer">
+    <span class="navn">{{virksomhet.navn}} ({{virksomhet.orgnummer}})</span>
+    <span class="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
+</div>
+
+<header>
+    <h1>
+        Gjennomført {{lowercase type}}
+    </h1>
+</header>
+
+<br/>
+
+<div class="samarbeidsdokument">
+    <p>Gjennomført: {{ iso_to_nor_datetime innhold.fullførtTidspunkt }}</p>
+
+    <p>Resultatene fra {{lowercase type}}en er sortert på tema og spørsmål.</p>
+    <p>For å ivareta anonymitet må det være minst tre svar per spørsmål. Ved mindre enn tre svar skjules antall
+        deltakere og resultatene settes til null.</p>
+    <br/>
+
+    {{#each innhold.spørsmålMedSvarPerTema}}
+        {{#> pia/includes/base-spørsmål-med-svar-per-tema}}
+            {{#*inline "tittel"}}{{this.navn}}{{/inline}}
+        {{/pia/includes/base-spørsmål-med-svar-per-tema}}
+    {{/each}}
+</div>
+</body>
+</html>
