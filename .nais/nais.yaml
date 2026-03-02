@@ -7,8 +7,6 @@ metadata:
     "team": "pia"
 spec:
   image: {{image}}
-  replicas:
-    min: 1
   liveness:
     path: "/internal/is_alive"
     port: 8080
