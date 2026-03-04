@@ -1,12 +1,4 @@
 version: 2
-
-registries:
-  ghcr:
-    type: docker-registry
-    url: ghcr.io
-    username: x-access-token
-    password: ${{secrets.READER_TOKEN}}
-
 updates:
   - package-ecosystem: "docker"
     directory: "/"
@@ -14,17 +6,12 @@ updates:
       interval: "weekly"
     cooldown:
       default-days: 7
-    open-pull-requests-limit: 15
-    registries:
-      - ghcr
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
     cooldown:
       default-days: 7
-    open-pull-requests-limit: 15
     groups:
       all-actions:
         patterns: [ "*" ]
