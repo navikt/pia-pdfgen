@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CURRENT_PATH="$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
-PDFGEN_VERSION="2.0.106"
+PDFGEN_VERSION="2.0.111"
 
 docker pull ghcr.io/navikt/pdfgen:$PDFGEN_VERSION
 docker run \
