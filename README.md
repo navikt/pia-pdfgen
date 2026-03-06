@@ -24,6 +24,12 @@ Kjør `./run.sh` i rot mappa. Dette burde starte opp et docker image som burde s
 
 hvor `ia-samarbeid`|`behovsvurdering` er en template (`/templates/pia/<template>`) med data fra `/data/pia/<template>.json`
  
+## Lage en release
+
+Ved push til main blir det laget en release draft i Github. Dersom man vil opprette en release for å (feks) 
+benytte i tester lokalt går man inn på [Releases](https://github.com/navikt/pia-pdfgen/releases), der bør det ligge
+en draft-release som man kan gå inn på for å publisere.
+
 ---
 
 # Henvendelser
