@@ -15,7 +15,7 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
       - name: docker-build-push
         uses: nais/docker-build-push@v0
         id: docker-build-push
@@ -36,7 +36,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
       - name: Deploy application to ${{ matrix.cluster }}-gcp
         uses: nais/deploy/actions/deploy@v2
         env:
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
       - name: Deploy application to dev
         uses: nais/deploy/actions/deploy@v2
         env:
@@ -71,7 +71,7 @@ jobs:
       id-token: write # for nais/login
     runs-on: ubuntu-latest
     steps:
-      - uses: navikt/pia-actions/trivy-scan@e147c84b55837c4a9586805f9ae36c9029d4e746 # v1.1.12
+      - uses: navikt/pia-actions/trivy-scan@b8ec125fe3d75ffdbf958c3546ba0aeafa689be0 # v1.1.13
         with:
           image: ${{ needs.build.outputs.image }}
           team: pia
