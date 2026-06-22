@@ -1,0 +1,187 @@
+#let data = json("/data/pia/kartleggingresultat.json")
+
+#let virksomhet = data.virksomhet
+#let sak = data.sak
+#let samarbeid = data.samarbeid
+#let innhold = data.innhold
+#let spørsmål-med-svar-per-tema = innhold.spørsmålMedSvarPerTema
+
+#let kartlegging-type = (
+  BEHOVSVURDERING: "behovsvurdering",
+  EVALUERING: "evaluering",
+).at(data.type)
+
+#let kartlegging-tittel = (
+  BEHOVSVURDERING: "Behovsvurdering",
+  EVALUERING: "Evaluering",
+).at(data.type)
+
+#let dokument-tittel = kartlegging-tittel + "-" + samarbeid.navn
+#let første-side-tittel = "Gjennomført " + kartlegging-type
+
+#let resultat-tekst = "Resultatene fra " + kartlegging-type + "en er sortert på tema og spørsmål."
+
+
+// -- Hjelpemetoder 
+#let iso-til-nor-datetime(iso-tidsstempel) = {
+    iso-tidsstempel.slice(8, 10) + "." // DD
+    iso-tidsstempel.slice(5, 7) + "." // MM
+    iso-tidsstempel.slice(0, 4) + " " // YYYY
+    iso-tidsstempel.slice(11, 13) + ":" // HH:
+    iso-tidsstempel.slice(14, 16) // mm
+}
+
+
+#let generell-info-tabell = {
+
+    let info-rad(key, value) = (
+        table.cell(
+            inset: (left: 0pt, right: 10pt, top: 1.2pt, bottom: 1.5pt),
+            )[
+                #text(weight: "bold")[#key]
+            ],
+        
+        table.cell(
+            inset: (left: 0pt, right: 0pt, top: 1.2pt, bottom: 1.5pt),
+        )[ 
+            #value
+        ],
+    )
+
+    let generell-info-rader = (
+        info-rad("Virksomhet:", virksomhet.navn,),
+        info-rad("Samarbeidsnavn:", samarbeid.navn),
+    )
+
+    table(
+        columns: (auto, 1fr),
+        stroke: none,
+        row-gutter: 0.75em,
+        align: (left, left),
+        //gutter: 3pt,
+        ..generell-info-rader.flatten(),
+    )
+}
+
+#let svar-tabell(svar-liste) = {
+    table(
+        columns: (1fr, 1fr),
+        stroke: 1.5pt + rgb("8c8c8c"),
+        inset: 10pt,
+        align: (left, left),
+
+        table.header(
+            [#text(weight: "bold")[Svaralternativ]],
+            [#text(weight: "bold")[Antall svar]],
+        ),
+
+        ..svar-liste
+            .map(svar => (
+                [#svar.tekst],
+                [#str(svar.antallSvar)]
+            ))
+            .flatten(),
+    )
+}
+
+#let spørsmål-med-svar-tabell(spørsmål) = {
+    block(
+        breakable: false,
+    )[
+        == #spørsmål.tekst
+
+        #v(10pt)
+
+        Antall deltakere som har svart: #spørsmål.antallDeltakereSomHarSvart
+
+        #v(10pt)
+
+        #svar-tabell(spørsmål.svarListe)
+    ]
+}
+
+#let spørsmål-med-svar-per-tema-tabell(tema) = [
+    #pagebreak()
+
+   = #tema.navn
+
+    #v(16pt)
+
+    #for spørsmål in tema.spørsmålMedSvar [
+        #spørsmål-med-svar-tabell(spørsmål)
+
+        #v(28pt)
+    ]
+]
+
+// -- Metadata om selve pdf-dokumentet
+#set document(
+    title: dokument-tittel,
+    author: "pia-pdf",
+    description: første-side-tittel,
+)
+
+// -- Global konfig for page properties, sideoppsett, skriftstørrelse etc.
+#set text(lang:"no")
+
+#set text(
+    font: ("Source Sans 3", "Noto Color Emoji"),
+    size: 10pt,
+    fill: rgb("3a3832")
+)
+
+#set par(
+    leading: 0.62em,
+)
+
+#set page(
+    paper: "a4",
+    flipped: false, // portrait
+
+    margin: (
+        top: 20mm,
+        left: 10mm,
+        right: 10mm,
+        bottom: 18mm
+    ),
+
+    footer: context [
+        #set text(size: 9pt)
+        #virksomhet.navn (#virksomhet.orgnummer)
+        #h(1fr)
+        #counter(page).display(
+            (side, total) => [side #side av #total], 
+            both: true,
+        )
+    ]   
+)
+
+// -- Første side
+#pdf.artifact(
+    image("/resources/navlogo.png", alt: none, width: 40mm)
+)
+
+#v(30mm)
+
+#generell-info-tabell
+
+#v(25mm)
+
+#text(size: 26pt, weight: "bold")[#første-side-tittel]
+
+#v(15mm)
+
+Gjennomført: #iso-til-nor-datetime(innhold.fullførtTidspunkt)
+
+#v(6mm)
+
+#resultat-tekst
+
+#v(6mm)
+
+For å ivareta anonymitet må det være minst tre svar per spørsmål. Ved mindre enn tre svar skjules antall deltakere og resultatene settes til null.
+
+// -- Resultater
+#for tema in spørsmål-med-svar-per-tema [
+    #spørsmål-med-svar-per-tema-tabell(tema)
+]
