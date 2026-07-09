@@ -58,7 +58,6 @@
         stroke: none,
         row-gutter: 0.75em,
         align: (left, left),
-        //gutter: 3pt,
         ..generell-info-rader.flatten(),
     )
 }
@@ -66,9 +65,9 @@
 #let svar-tabell(svar-liste) = {
     table(
         columns: (1fr, 1fr),
-        stroke: 1.5pt + rgb("8c8c8c"),
-        inset: 10pt,
-        align: (left, left),
+        stroke: 1.5pt + rgb("#8c8c8c"),
+        inset: (x: 6pt, y: 8pt),
+        align: (left + horizon, left + horizon),
 
         table.header(
             [#text(weight: "bold")[Svaralternativ]],
@@ -88,7 +87,7 @@
     block(
         breakable: false,
     )[
-        == #spørsmål.tekst
+        === #spørsmål.tekst
 
         #v(10pt)
 
@@ -103,7 +102,7 @@
 #let spørsmål-med-svar-per-tema-tabell(tema) = [
     #pagebreak()
 
-   = #tema.navn
+   == #tema.navn
 
     #v(16pt)
 
@@ -122,16 +121,23 @@
 )
 
 // -- Global konfig for page properties, sideoppsett, skriftstørrelse etc.
-#set text(lang:"no")
+#set text(lang: "no")
 
 #set text(
     font: ("Source Sans 3", "Noto Color Emoji"),
-    size: 10pt,
-    fill: rgb("3a3832")
+    size: 12pt,
+    fill: rgb("#3a3832")
 )
+
+#set heading(numbering: none)
+
+#show heading.where(level: 1): set text(size: 26pt, weight: "bold") // Gjennomført evaluering | behovsvurdering
+#show heading.where(level: 2): set text(size: 18pt, weight: "bold") // Temanavn tittel
+#show heading.where(level: 3): set text(size: 14pt, weight: "bold") // Spørsmålstekst
 
 #set par(
     leading: 0.62em,
+    linebreaks: "optimized",
 )
 
 #set page(
@@ -139,7 +145,7 @@
     flipped: false, // portrait
 
     margin: (
-        top: 20mm,
+        top: 10mm,
         left: 10mm,
         right: 10mm,
         bottom: 18mm
@@ -161,27 +167,31 @@
     image("/resources/navlogo.png", alt: none, width: 40mm)
 )
 
-#v(30mm)
+#v(12mm)
 
 #generell-info-tabell
 
-#v(25mm)
+#v(12mm)
 
-#text(size: 26pt, weight: "bold")[#første-side-tittel]
+= #første-side-tittel
 
-#v(15mm)
+#v(8mm)
 
 Gjennomført: #iso-til-nor-datetime(innhold.fullførtTidspunkt)
 
-#v(6mm)
+#v(4mm)
 
 #resultat-tekst
 
 #v(6mm)
 
-For å ivareta anonymitet må det være minst tre svar per spørsmål. Ved mindre enn tre svar skjules antall deltakere og resultatene settes til null.
+For å ivareta anonymitet må det være minst tre svar per spørsmål. Ved mindre enn tre svar skjules \ 
+antall deltakere og resultatene settes til null.
 
-// -- Resultater
+// -- Resultatsider 
+#set page(
+    margin: (top: 20mm, left: 10mm, right: 10mm, bottom: 18mm)
+)
 #for tema in spørsmål-med-svar-per-tema [
     #spørsmål-med-svar-per-tema-tabell(tema)
 ]

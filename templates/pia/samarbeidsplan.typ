@@ -6,7 +6,7 @@
 #let innhold = data.innhold
 #let temaer = innhold.temaer
 #let dokument-tittel = "Samarbeidsplan" + "-" + samarbeid.navn + "-" + str(samarbeid.id)
-#let første-side-tittel = "Gjennomført evaluering"
+#let første-side-tittel = "Samarbeidsplan"
 
 
 // -- Hjelpemetoder
@@ -67,7 +67,6 @@
         stroke: none,
         row-gutter: 0.75em,
         align: (left, left),
-        //gutter: 3pt,
         ..generell-info-rader.flatten(),
     )
 }
@@ -76,8 +75,8 @@
   table(
     columns: (1fr, 1fr, 1fr),
     stroke: rgb("8c8c8c"),
-    inset: (x: 10pt, y: 6pt),
-    align: (left, left),
+    inset: (x: 6pt, y: 8pt),
+    align: (left + horizon),
 
     table.header(
       [#text(weight: "bold")[Innhold]],
@@ -89,7 +88,7 @@
     [#periode(undertema)],
     [#undertema.status],
 
-    table.cell(colspan: 3)[
+    table.cell(colspan: 3, )[
       #text(weight: "bold")[Mål:] #undertema.målsetning
     ],
   )
@@ -99,9 +98,9 @@
   #if tema.inkludert [
     #pagebreak()
 
-    = #tema.navn
+    == #tema.navn
 
-    #v(15pt)
+    #v(16pt)
 
     #for undertema in tema.undertemaer [
       #if undertema.status != none [
@@ -118,24 +117,30 @@
 
 
 
-// -- METADATA OM SELVE PDF-DOKUMENTET 
+// -- Metadata om selve pdf-dokumentet 
 #set document(
     title: dokument-tittel,
     author: "pia-pdf",
     description: første-side-tittel,
 )
 
-// -- GLOBAL KONFIG FOR PAGE PROPERTIES, SIDEOPPSETT, SKRIFTSTØRRELSE etc.
-#set text(lang:"no")
+// -- Global konfig for page properties, sideoppsett, skriftstørrelse etc.
+#set text(lang: "no")
 
 #set text(
     font: ("Source Sans 3", "Noto Color Emoji"),
-    size: 10pt,
-    fill: rgb("3a3832")
+    size: 12pt,
+    fill: rgb("#3a3832")
 )
+
+#set heading(numbering: none)
+
+#show heading.where(level: 1): set text(size: 26pt, weight: "bold") // Samarbeidsplan
+#show heading.where(level: 2): set text(size: 18pt, weight: "bold") //Temanavn tittel
 
 #set par(
     leading: 0.62em,
+    linebreaks: "optimized",
 )
 
 #set page(
@@ -143,7 +148,7 @@
     flipped: false, // portrait
 
     margin: (
-        top: 20mm,
+        top: 10mm,
         left: 10mm,
         right: 10mm,
         bottom: 18mm
@@ -166,7 +171,7 @@
   image("/resources/navlogo.png", alt: none, width: 40mm)
 )
 
-#v(20mm)
+#v(12mm)
 
 #grid(
   columns: (auto, 1fr),
@@ -177,26 +182,28 @@
   [#sak.navenhet.enhetsnavn],
 )
 
-#v(29mm)
+#v(18mm)
 
 #generell-info-tabell
 
-#v(24mm)
+#v(12mm)
 
-#text(size: 26pt, weight: "bold")[Samarbeidsplan]
+= #første-side-tittel
 
 #v(12mm)
 
 Sist endret: #iso-til-nor-datetime(innhold.sistEndret)
 
-#v(8mm)
+#v(10mm)
 
-Samarbeidsplanen mellom Nav og virksomheten viser prioriterte temaer og hvor lenge man skal jobbe
-med de ulike undertemaene. Hvert undertema har et definert mål, varighet og status. Planen kan
+Samarbeidsplanen mellom Nav og virksomheten viser prioriterte temaer og hvor lenge man skal jobbe \ 
+med de ulike undertemaene. Hvert undertema har et definert mål, varighet og status. Planen kan \ 
 endres helt frem til samarbeidet med virksomheten avsluttes.
 
-// Temaer og undertemaer
-
+// Tema- og undertemasider
+#set page(
+    margin: (top: 20mm, left: 10mm, right: 10mm, bottom: 18mm)
+)
 #for tema in temaer [
   #tema-blokk(tema)
 ]
