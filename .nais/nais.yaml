@@ -35,3 +35,7 @@ spec:
       rules:
         - application: lydia-api
         - application: fia-dokument-publisering
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "128Mi"
