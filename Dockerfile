@@ -1,5 +1,5 @@
 # Dockerfile
-FROM ghcr.io/navikt/pdfgenrs:1.0.39@sha256:24f6a73234c89d20a899b0121318baa12e185ad47e5e111460625ce1d4ba5f86
+FROM ghcr.io/navikt/pdfgenrs:1.0.43@sha256:61b7bdcfe8f2b94bde98ca239ad0a80a57d7050a459751a5c938d8c0c74ba644
 
 COPY templates /app/templates
 COPY fonts /app/fonts
